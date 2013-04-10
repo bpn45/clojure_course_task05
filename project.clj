@@ -1,19 +1,21 @@
-(defproject clojurescript-all-the-way-down "1.3.37"
-  :plugins [[lein-cljsbuild "0.2.9"]]
-  :license {:name "Mozilla Public License"
-            :url "http://www.mozilla.org/MPL/2.0/"}
-  :dependencies [[org.clojure/clojure "1.4.0"]
+(defproject clojure_course_task04a "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://task04-bpn.rhcloud.com"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :plugins [[lein-cljsbuild "0.3.0"]]
+  :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-1535"]
                  [hiccups "0.1.1"]
                  [webfui "0.2"]]
-  :cljsbuild {:builds
-              [{:source-path "src/server"
-                :compiler
-                {:output-to "js/main.js"
-                 :output-dir "js"
-                 :optimizations :simple
-                 :target :nodejs}}
-               {:source-path "src/client"
-                :compiler
-                {:output-to "static/cljs.js"
-                 :output-dir "static/cljs"}}]})
+  :cljsbuild
+	{:builds
+ 	[{:source-paths ["src/server"],
+   	:compiler
+  	{:output-dir "js",
+    	:target :nodejs,
+    	:output-to "js/main.js",
+    	:optimizations :simple}}
+  	{:source-paths ["src/client"],
+   	:compiler {:output-dir "static/cljs", :output-to "static/cljs.js"}}]}
+

@@ -10,5 +10,7 @@
   # Start app
   $ node js/main.js
 
-  # Open http://localhost:1337/
-```
+  Под впечатлением выступления Бодил Стокке (Bodil Stokke) на Clojure/conj 2012
+Форкнул репозиторий и подстроил под облачный хостинг. 
+Стек технологий - Node.js - MongoDB - ClojureScript
+Немного фейслифтинга. Но есть планы развития.
