@@ -5,7 +5,7 @@
 
 (def my-dom (atom nil))
 (def state (atom []))
-(def socket (.connect js/io "http://localhost"))
+(def socket (.connect js/io "http://coursetask05-bpn.rhcloud.com"))
 
 (defdom my-dom)
 
@@ -18,7 +18,7 @@
 (defn render-all [old-dom]
   [:div
    [:h1
-    [:img {:src "/plthulk.jpg"}] "PLT Checklist"]
+    [:img {:src "/shapka.jpg"}] "Список дел"]
    [:ul (map concept-item @state)]
    [:form
     [:input {:type "text"}]]])

@@ -7,15 +7,19 @@
 (def ^:export Server (aget mongodb "Server"))
 (def ^:export Collection (aget mongodb "Collection"))
 (def ^:export ObjectID (aget mongodb "ObjectID"))
+(def ^:export MongoClient (aget mongodb "MongoClient"))
 
 (defn connect
-  ([host port db callback]
+   ([host port db callback]
      (let [server (Server. host port)]
        (.open (Db. db server) callback)))
   ([host db callback]
      (connect host 27017 db callback))
   ([db callback]
-     (connect "localhost" db callback)))
+     (connect "localhost" db callback))
+;mongodb://admin:k2cpmgec-Wmk@127.12.10.129:27017/coursetask05
+  ([callback] (.connect MongoClient "mongodb://admin:k2cpmgec-Wmk@127.12.10.129:27017/coursetask05"))
+)
 
 (defn collection [db coll]
   (Collection. db coll))

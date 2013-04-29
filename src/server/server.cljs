@@ -1,6 +1,7 @@
 (ns tbd.server
   (:use [tbd.yunoincore :only [clj->js]])
-  (:require-macros [hiccups.core :as hiccups])
+  (:require-macros [hiccups.core :as hiccups]
+                       [tbd.util :as util])
   (:require [hiccups.runtime :as hiccupsrt]
             [tbd.mongo :as mongo]))
 
@@ -57,10 +58,13 @@
            (.on socket "delete" (partial on-delete-doc socket))
            (.on socket "check" (partial on-check-doc socket))
            (send-docs socket)))
-    (.listen server 1337))
-  (log "u so listening on http://localhost:1337/"))
+    (.listen server (.-OPENSHIFT_NODEJS_PORT (.-env js/process))
+                      (.-OPENSHIFT_NODEJS_IP (.-env js/process))
+                      ))
+  (log (str "you so listening on http://" (.-OPENSHIFT_NODEJS_IP (.-env js/process)) (.-OPENSHIFT_NODEJS_PORT (.-env js/process))) ))
 
 (defn main [& args]
-  (mongo/connect "plt" (fn [err db] (server db))))
+  (mongo/connect ;(str (.-OPENSHIFT_MONGODB_DB_URL (.-env js/process)) (.-OPENSHIFT_APP_NAME (.env js/process)))  
+(fn [err db] (server db))))
 
 (set! *main-cli-fn* main)

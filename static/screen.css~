@@ -11,7 +11,7 @@ html {
 
 body {
     margin: 0;
-    background:  url(jj.png);
+    background: url(jj.png);
     font-family: 'Share Tech Mono', 'Ubuntu Mono', 'Andale Mono', monospace;
     font-size: 1.5em;
     color: #2f2;
